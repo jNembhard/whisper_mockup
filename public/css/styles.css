@@ -14,3 +14,10 @@ body {
   color: #fff;
   background-color: #000;
 }
+
+footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0px;
+  width: 100%;
+}
