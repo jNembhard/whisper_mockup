@@ -22,7 +22,7 @@ const connectionParams = {
 };
 
 // const URL = "mongodb://localhost:27017/userDB";
-const DYNO_URL = "";
+const DYNO_URL = "https://whisper-secrets.herokuapp.com";
 const URI = process.env.MONGODB_URI;
 
 app.use(express.static("public"));
