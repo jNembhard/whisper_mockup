@@ -14,11 +14,10 @@ const findOrCreate = require("mongoose-findorcreate");
 const wakeDyno = require("woke-dyno");
 
 // Force webpage redirect to https
-const secure = require("ssl-express-www"); 
+const secure = require("ssl-express-www");
 
 const app = express();
 app.use(secure);
-
 
 const connectionParams = {
   useNewUrlParser: true,
@@ -227,17 +226,6 @@ app.post("/login", function (req, res) {
     }
   });
 });
-
-// force redirect to https instead of http
-// if (process.env.NODE_ENV === "production") {
-//   app.use((req, res, next) => {
-//     if (req.header("x-forwarded-proto") !== "https") {
-//       res.redirect(`https://${req.header("host")}${req.url}`);
-//     } else {
-//       next();
-//     }
-//   });
-// }
 
 app.listen(PORT, function () {
   wakeDyno(DYNO_URL).start(); // prevents app from falling asleep
