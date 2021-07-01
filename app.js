@@ -72,7 +72,8 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: "https://whisper-secrets.herokuapp.com/auth/facebook/secrets",
+      callbackURL:
+        "https://whisper-secrets.herokuapp.com/auth/facebook/secrets",
     },
     function (accessToken, refreshToken, profile, cb) {
       console.log(profile);
@@ -221,6 +222,17 @@ app.post("/login", function (req, res) {
     }
   });
 });
+
+// force redirect to https instead of http
+if (process.env.NODE_ENV === "production") {
+  app.use((req, res, next) => {
+    if (req.header("x-forwarded-proto") !== "https") {
+      res.redirect(`https://${req.header("host")}${req.url}`);
+    } else {
+      next();
+    }
+  });
+}
 
 app.listen(PORT, function () {
   wakeDyno(DYNO_URL).start(); // prevents app from falling asleep
