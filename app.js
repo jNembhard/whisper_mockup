@@ -12,6 +12,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook");
 const findOrCreate = require("mongoose-findorcreate");
 const wakeDyno = require("woke-dyno");
+const sslRedirect = require("heroku-ssl-redirect");
 
 const app = express();
 
@@ -28,6 +29,7 @@ const URI = process.env.MONGODB_URI;
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(sslRedirect());
 
 mongoose.connect(URI, connectionParams);
 
@@ -224,15 +226,15 @@ app.post("/login", function (req, res) {
 });
 
 // force redirect to https instead of http
-if (process.env.NODE_ENV === "production") {
-  app.use((req, res, next) => {
-    if (req.header("x-forwarded-proto") !== "https") {
-      res.redirect(`https://${req.header("host")}${req.url}`);
-    } else {
-      next();
-    }
-  });
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use((req, res, next) => {
+//     if (req.header("x-forwarded-proto") !== "https") {
+//       res.redirect(`https://${req.header("host")}${req.url}`);
+//     } else {
+//       next();
+//     }
+//   });
+// }
 
 app.listen(PORT, function () {
   wakeDyno(DYNO_URL).start(); // prevents app from falling asleep
