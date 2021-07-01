@@ -12,7 +12,7 @@
 
 ## Purpose
 
-This web application is intended for use by participants looking to share their secrets anonymously.
+This web application is intended for use by people looking to share their secrets anonymously.
 
 Users can create a username and password locally, or register with the site using their Gmail or Facebook login details. Please click the link to view the [whisper-secrets](https://whisper-secrets.herokuapp.com/) website.
 
@@ -43,7 +43,9 @@ nodemon app.js
 
 ## Demonstration
 
-Below is a basic demo useful for navigationg the website.
+Below is a basic demo useful for navigating the website.
+
+![Whisper_Mockup](/public/css/images/secrets_authentication.gif)
 
 ## Dependencies
 
