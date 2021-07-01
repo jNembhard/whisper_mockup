@@ -12,7 +12,8 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook");
 const findOrCreate = require("mongoose-findorcreate");
 const wakeDyno = require("woke-dyno");
-const sslRedirect = require("heroku-ssl-redirect");
+
+import sslRedirect from "heroku-ssl-redirect";
 
 const app = express();
 
