@@ -13,9 +13,12 @@ const FacebookStrategy = require("passport-facebook");
 const findOrCreate = require("mongoose-findorcreate");
 const wakeDyno = require("woke-dyno");
 
-import sslRedirect from "heroku-ssl-redirect";
+// Force webpage redirect to https
+const secure = require("ssl-express-www"); 
 
 const app = express();
+app.use(secure);
+
 
 const connectionParams = {
   useNewUrlParser: true,
@@ -30,7 +33,6 @@ const URI = process.env.MONGODB_URI;
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(sslRedirect());
 
 mongoose.connect(URI, connectionParams);
 
