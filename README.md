@@ -16,30 +16,14 @@ This web application is intended for use by people looking to share their secret
 
 Users can create a username and password locally, or register with the site using their Gmail or Facebook login details. Please click the link to view the [whisper-secrets](https://whisper-secrets.herokuapp.com/) website.
 
-## Setup
+## How to Use the Application
 
-For local use, download the files and navigate into the Secrets Authentication folder and run the following command:
-
-```
-npm install
-```
-
-You will need to edit the code to test locally. In line 36 of app.js:
-
-```js
-mongoose.connect(URI, connectionParams);
-```
-
-```js
-mongoose.connect(URL, connectionParams);
-```
-
-You can then run either of the following:
-
-```
-node app.js
-nodemon app.js
-```
+1. First click "Register" to create an account.
+2. Choose to register your account by creating an username (email address) and password. You can also sign up with your Google or Facebook credentials.
+3. Once logged in, you will be brought to a page to view each anonymous secret.
+4. You may either click the "Log Out" button to logout, or click the "Submit a Secret" button to submit your own secret.
+5. Type your secret and click the "Submit" button.
+6. If you have logged out and already have an account, you may click the "Login" on the home page to enter your login credentials.
 
 ## Demonstration
 
